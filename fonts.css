@@ -1,0 +1,20 @@
+/* PT Serif без сетевых запросов: берётся установленный в системе шрифт,
+   иначе — следующий из стека (Times New Roman / Georgia / serif), все с кириллицей.
+   Чтобы гарантировать PT Serif на любой машине, положите рядом woff2 и добавьте
+   url('PTSerif-Regular.woff2') format('woff2') первым источником в src. */
+@font-face{
+  font-family:'PT Serif'; font-style:normal; font-weight:400; font-display:swap;
+  src:local('PT Serif'), local('PTSerif-Regular'), local('PT Serif Regular');
+}
+@font-face{
+  font-family:'PT Serif'; font-style:normal; font-weight:700; font-display:swap;
+  src:local('PT Serif Bold'), local('PTSerif-Bold');
+}
+@font-face{
+  font-family:'PT Astra Serif'; font-style:normal; font-weight:400; font-display:swap;
+  src:local('PT Astra Serif'), local('PTAstraSerif-Regular');
+}
+@font-face{
+  font-family:'PT Astra Serif'; font-style:normal; font-weight:700; font-display:swap;
+  src:local('PT Astra Serif Bold'), local('PTAstraSerif-Bold');
+}

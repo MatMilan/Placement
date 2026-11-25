@@ -1,0 +1,347 @@
+{
+  "schema": 6,
+  "halls": [
+   {
+    "id": "zas",
+    "name": "Зал заседаний",
+    "layouts": [
+     {
+      "id": "zas1",
+      "name": "1. Оперативное совещание",
+      "room": { "x": 8, "y": 12, "w": 194, "h": 277 },
+      "doors": [ { "side": "top", "a": 88, "b": 112 }, { "side": "left", "a": 250, "b": 274 } ],
+      "windows": [
+       { "side": "right", "a": 22.39, "b": 70.86 }, { "side": "right", "a": 91.64, "b": 140.11 },
+       { "side": "right", "a": 160.89, "b": 209.36 }, { "side": "right", "a": 230.14, "b": 278.61 }
+      ],
+      "furniture": [
+       { "id": "table-main", "type": "table", "shape": "capsule", "x": 92, "y": 55, "w": 26, "h": 181, "label": "" },
+       { "id": "table-presidium", "type": "table", "shape": "capsule", "x": 54, "y": 258, "w": 102, "h": 9.5, "label": "" },
+       { "id": "podium", "type": "object", "shape": "round", "r": 3, "x": 182, "y": 250, "w": 18, "h": 18, "label": "трибуна" },
+       { "id": "tech-place", "type": "object", "shape": "rect", "r": 1.2, "x": 30, "y": 13, "w": 57, "h": 25, "label": "техническое место" },
+       { "id": "side-table-mid", "type": "table", "shape": "round", "r": 1.5, "x": 9, "y": 153.1, "w": 8, "h": 10.5, "label": "" },
+       { "id": "side-table-left", "type": "table", "shape": "round", "r": 1.5, "x": 17, "y": 234.85, "w": 8, "h": 10.5, "label": "" },
+       { "id": "side-table-right", "type": "table", "shape": "round", "r": 1.5, "x": 185, "y": 234.85, "w": 8, "h": 10.5, "label": "" }
+      ],
+      "seats": [
+       {"id":"s01","block":"presidium","chair":[58,279,14,8.6],"font":"main","zone":{"kind":"above","gap":1}},
+       {"id":"s02","block":"presidium","chair":[98,279,14,8.6],"font":"main","zone":{"kind":"above","gap":1}},
+       {"id":"s03","block":"presidium","chair":[138,279,14,8.6],"font":"main","zone":{"kind":"above","gap":1}},
+       {"id":"s04","block":"end_top","chair":[99.5,45,11,8],"font":"main","zone":{"kind":"left","gap":1}},
+       {"id":"s05","block":"main_left","chair":[84,55.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s06","block":"main_left","chair":[84,68.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s07","block":"main_left","chair":[84,81.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s08","block":"main_left","chair":[84,94.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s09","block":"main_left","chair":[84,107.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s10","block":"main_left","chair":[84,120.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s11","block":"main_left","chair":[84,133.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s12","block":"main_left","chair":[84,146.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s13","block":"main_left","chair":[84,159.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s14","block":"main_left","chair":[84,172.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s15","block":"main_left","chair":[84,185.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s16","block":"main_left","chair":[84,198.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s17","block":"main_left","chair":[84,211.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s18","block":"main_left","chair":[84,224.5,7,11],"font":"main","zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"}},
+       {"id":"s19","block":"main_right","chair":[119,55.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s20","block":"main_right","chair":[119,68.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s21","block":"main_right","chair":[119,81.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s22","block":"main_right","chair":[119,94.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s23","block":"main_right","chair":[119,107.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s24","block":"main_right","chair":[119,120.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s25","block":"main_right","chair":[119,133.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s26","block":"main_right","chair":[119,146.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s27","block":"main_right","chair":[119,159.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s28","block":"main_right","chair":[119,172.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s29","block":"main_right","chair":[119,185.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s30","block":"main_right","chair":[119,198.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s31","block":"main_right","chair":[119,211.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s32","block":"main_right","chair":[119,224.5,7,11],"font":"main","zone":{"kind":"band","x":127,"w":36.6,"align":"left"}},
+       {"id":"s33","block":"end_bottom","chair":[99.5,238,11,8],"font":"main","zone":{"kind":"below","gap":0.8}},
+       {"id":"s34","block":"wall_left","chair":[9,42,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s35","block":"wall_left","chair":[9,52.1,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s36","block":"wall_left","chair":[9,62.2,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s37","block":"wall_left","chair":[9,72.3,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s38","block":"wall_left","chair":[9,82.4,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s39","block":"wall_left","chair":[9,92.5,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s40","block":"wall_left","chair":[9,102.6,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s41","block":"wall_left","chair":[9,112.7,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s42","block":"wall_left","chair":[9,122.8,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s43","block":"wall_left","chair":[9,132.9,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s44","block":"wall_left","chair":[9,143,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s45","block":"wall_left","chair":[9,165.1,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s46","block":"wall_left","chair":[9,175.2,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s47","block":"wall_left","chair":[9,185.3,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s48","block":"wall_left","chair":[9,195.4,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s49","block":"wall_left","chair":[9,205.5,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s50","block":"wall_left","chair":[9,215.6,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s51","block":"wall_left","chair":[9,225.7,7,8.6],"font":"side","zone":{"kind":"band","x":17,"w":28.4,"align":"left"}},
+       {"id":"s52","block":"wall_left","chair":[9,235.8,7,8.6],"font":"side","zone":{"kind":"band","x":26,"w":28.4,"align":"left"}},
+       {"id":"s53","block":"wall_right","chair":[194,54,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s54","block":"wall_right","chair":[194,64.1,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s55","block":"wall_right","chair":[194,74.2,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s56","block":"wall_right","chair":[194,84.3,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s57","block":"wall_right","chair":[194,94.4,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s58","block":"wall_right","chair":[194,104.5,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s59","block":"wall_right","chair":[194,114.6,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s60","block":"wall_right","chair":[194,124.7,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s61","block":"wall_right","chair":[194,134.8,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s62","block":"wall_right","chair":[194,144.9,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s63","block":"wall_right","chair":[194,155,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s64","block":"wall_right","chair":[194,165.1,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s65","block":"wall_right","chair":[194,175.2,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s66","block":"wall_right","chair":[194,185.3,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s67","block":"wall_right","chair":[194,195.4,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s68","block":"wall_right","chair":[194,205.5,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s69","block":"wall_right","chair":[194,215.6,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s70","block":"wall_right","chair":[194,225.7,7,8.6],"font":"side","zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"}},
+       {"id":"s71","block":"wall_right","chair":[194,235.8,7,8.6],"font":"side","zone":{"kind":"band","x":155.6,"w":28.4,"align":"right"}},
+       {"id":"s72","block":"grid9","chair":[125.4,12.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s73","block":"grid9","chair":[154.4,12.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s74","block":"grid9","chair":[183.4,12.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s75","block":"grid9","chair":[125.4,26.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s76","block":"grid9","chair":[154.4,26.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s77","block":"grid9","chair":[183.4,26.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s78","block":"grid9","chair":[125.4,40.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s79","block":"grid9","chair":[154.4,40.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}},
+       {"id":"s80","block":"grid9","chair":[183.4,40.5,8,7],"font":"side","zone":{"kind":"below","gap":0.6}}
+      ]
+     },
+     { "id": "zas2", "name": "2. Заседание Правительства", "from": "zas1",
+       "hideSeats": ["s04"],
+       "addFurniture": [
+        { "id": "podium-head", "type": "object", "shape": "round", "r": 3, "x": 96, "y": 42, "w": 18, "h": 12, "label": "трибуна" }
+       ] },
+     { "id": "zas3", "name": "3. Совещание", "from": "zas1",
+       "keepBlocks": ["main_left","main_right","end_top","end_bottom"],
+       "keepFurniture": ["table-main","podium","tech-place"] },
+     { "id": "zas4", "name": "4. Комиссия", "from": "zas1",
+       "keepBlocks": ["main_left","main_right","end_top","presidium"],
+       "keepFurniture": ["table-main","podium","tech-place","table-presidium"] }
+    ]
+   },
+   {
+    "id": "big",
+    "name": "Большой Зал",
+    "layouts": [
+     {
+      "id": "big_base", "name": "Базовая расстановка", "hidden": true,
+      
+      "page": { "w": 297, "h": 210, "orientation": "landscape" },
+      "room": { "x": 8, "y": 12, "w": 281, "h": 192 },
+      "doors": [ 
+        { "side": "bottom", "a": 220, "b": 240 }
+       ],
+      "windows": [
+       { "side": "top", "a": 57.5, "b": 82.5 },
+       { "side": "top", "a": 92.5, "b": 117.5 },
+       { "side": "top", "a": 127.5, "b": 152.5 },
+       { "side": "top", "a": 162.5, "b": 187.5 },
+       { "side": "top", "a": 197.5, "b": 225.5 }
+      ],
+      "furniture": [
+       { "id": "tab-pres", "type": "table", "shape": "rect", "r": 2, "x": 237.4, "y": 60, "w": 12, "h": 90, "label": "" },
+       { "id": "tab-secr", "type": "table", "shape": "rect", "r": 2, "x": 150, "y": 34, "w": 103, "h": 12, "label": "" },
+       { "id": "tab-top", "type": "table", "shape": "rect", "r": 2, "x": 133, "y": 14, "w": 8, "h": 90, "label": "" },
+       { "id": "tab-bot", "type": "table", "shape": "rect", "r": 2, "x": 133, "y": 112, "w": 8, "h": 90, "label": "" },                     
+       { "id": "trib", "type": "object", "shape": "round", "r": 2.5, "x": 200, "y": 68, "w": 16, "h": 16, "label": "" },
+       { "id": "trib1", "type": "object", "shape": "rect", "r": 0, "x": 203, "y": 71, "w": 13, "h": 10, "label": "" },
+       { "id": "tab-oper", "type": "object", "shape": "rect", "r": 1, "x": 160, "y": 186, "w": 40, "h": 16, "label": "служебное место" },
+       { "id": "server", "type": "object", "shape": "rect", "r": 1, "x": 200, "y": 172, "w": 16, "h": 30, "label": "" }
+      ],
+      "seatRows": [
+        {"block":"presidium","font":"main","chair":{"w":7,"h":11},"zone":{"kind":"below","gap":1},
+        "cols":[269.4],"rows":{"y0":62,"step":25,"count":4},"idFrom":1},
+        {"block":"secretariat","font":"side","chair":{"w":11,"h":7},"zone":{"kind":"below","gap":1},
+        "cols":[156.5,186.5,216.5,246.5],"rows":{"y0":16,"step":0,"count":1},"idFrom":5},       
+        {"block":"top-audience","font":"side","chair":{"w":6,"h":7},"zone":{"kind":"below","gap":1},
+        "cols":[24,54,84,114],"rows":{"y0":15,"step":15,"count":6},"idFrom":9},
+        {"block":"bottom-audience","font":"side","chair":{"w":6,"h":7},"zone":{"kind":"below","gap":1},
+        "cols":[24,54,84,114],"rows":{"y0":113,"step":15,"count":6},"idFrom":33}
+        
+      ]
+     },
+     {
+      "id": "big_base2","name": "Президиум и весь зал", "hidden": true,
+      "page": { "w": 297, "h": 210, "orientation": "landscape" },
+      "room": { "x": 8, "y": 12, "w": 281, "h": 192 },
+      "doors": [ { "side": "bottom", "a": 220, "b": 240 }],
+      "windows": [
+       { "side": "top", "a": 57.5, "b": 82.5 },
+       { "side": "top", "a": 92.5, "b": 117.5 },
+       { "side": "top", "a": 127.5, "b": 152.5 },
+       { "side": "top", "a": 162.5, "b": 187.5 },
+       { "side": "top", "a": 197.5, "b": 225.5 }
+      ],
+      "furniture": [
+        { "id": "tab-pres", "type": "table", "shape": "rect", "r": 2, "x": 237.4, "y": 60, "w": 12, "h": 90, "label": "" }                     
+      ],
+      "seatRows": [
+        {"block":"presidium","font":"main","chair":{"w":7,"h":11},"zone":{"kind":"below","gap":1},
+        "cols":[269.4],"rows":{"y0":62,"step":25,"count":4},"idFrom":1},
+        {"block":"top-audience","font":"side","chair":{"w":6,"h":7},"zone":{"kind":"below","gap":1},
+        "cols":[24,54,84,114,144,174,204],"rows":{"y0":15,"step":15,"count":6},"idFrom":5},
+        {"block":"bottom-audience","font":"side","chair":{"w":6,"h":7},"zone":{"kind":"below","gap":1},
+        "cols":[24,54,84,114,144,174,204],"rows":{"y0":113,"step":15,"count":6},"idFrom":47}
+       ]      
+     },
+     { "id": "big1", "name": "1. Общее собрание", "from": "big_base",
+      "keepBlocks": ["presidium", "top-audience", "bottom-audience", "secretariat"] },
+     { "id": "big2", "name": "2. Обучение", "from": "big_base2",
+      "keepBlocks": ["presidium", "top-audience", "bottom-audience"] },
+     { "id": "big3", "name": "3. Совет", "from": "big_base",
+      "keepBlocks": ["presidium","top-audience", "bottom-audience"] },
+     { "id": "big4", "name": "4. Встреча", "from": "big_base",
+      "keepBlocks": ["secretariat","top-audience", "bottom-audience"] }
+    ]
+   },
+   {
+    "id": "sov",
+    "name": "Совещательный зал",
+    "layouts": [
+     {
+      "id": "sov_base", "name": "Базовая расстановка", "hidden": true,
+      "room": { "x": 8, "y": 12, "w": 194, "h": 277 },
+      "doors": [ { "side": "top", "a": 14, "b": 38 }, { "side": "bottom", "a": 14, "b": 38 } ],
+      "windows": [
+       { "side": "right", "a": 22.39, "b": 70.86 }, { "side": "right", "a": 91.64, "b": 140.11 },
+       { "side": "right", "a": 160.89, "b": 209.36 }, { "side": "right", "a": 230.14, "b": 278.61 },
+       { "side": "left", "a": 91.64, "b": 140.11 }, { "side": "left", "a": 160.89, "b": 209.36 }
+      ],
+      "furniture": [
+       { "id": "table-main", "type": "table", "shape": "ring",
+         "x": 92, "y": 52, "w": 57.2, "h": 194, "t": 15, "tx": 30, "r": 4, "label": "" }
+      ],
+      "seats": [
+       {"id":"s01","block":"presidium","chair":[113.6,250,14,8.6],"font":"main","zone":{"kind":"below","gap":1}}
+      ],
+      "seatRows": [
+       {"block":"main_left","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":46.4,"w":36.6,"align":"right"},
+        "cols":[87.5],"rows":{"y0":58,"step":19,"count":10},"idFrom":2},
+       {"block":"main_right","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":158.2,"w":36.6,"align":"left"},
+        "cols":[153.7],"rows":{"y0":58,"step":19,"count":10},"idFrom":12},
+       {"block":"end_top","font":"main","chair":{"w":11,"h":7},
+        "zone":{"kind":"above","gap":1},
+        "cols":[101.6,139.6],"rows":{"y0":40,"step":0,"count":1},"idFrom":22},
+       {"block":"wall_right","font":"side","chair":{"w":7,"h":8.6},
+        "zone":{"kind":"band","x":164.6,"w":28.4,"align":"right"},
+        "cols":[197.5],"rows":{"y0":28,"step":12,"count":2},"idFrom":24},
+       {"block":"wall_left","font":"side","chair":{"w":7,"h":8.6},
+        "zone":{"kind":"band","x":17,"w":28.4,"align":"left"},
+        "cols":[12.5],"rows":{"y0":40,"step":12,"count":10},"idFrom":26},
+       {"block":"presidium_pair","font":"main","chair":{"w":14,"h":8.6},
+        "zone":{"kind":"below","gap":1},
+        "cols":[101.6,139.6],"rows":{"y0":250,"step":0,"count":1},"idFrom":36}
+      ]
+     },
+     { "id": "sov1", "name": "1. ВКС", "from": "sov_base",
+       "keepBlocks": ["presidium","main_left","main_right"] },
+     { "id": "sov2", "name": "2. ВКС совместное", "from": "sov_base",
+       "keepBlocks": ["presidium_pair","main_left","main_right"] },
+     { "id": "sov3", "name": "3. Совещание", "from": "sov_base",
+       "keepBlocks": ["presidium","main_left","main_right","end_top"] },
+     { "id": "sov4", "name": "4. Совещание плюс", "from": "sov_base",
+       "hideBlocks": ["presidium_pair"],
+       "hideSeats": ["s29","s30","s31","s32","s33","s34","s35"] },
+     { "id": "sov5", "name": "5. Совещание расширенное", "from": "sov_base",
+       "hideSeats": ["s36","s37"] }
+    ]
+   },
+   {
+    "id": "vks",
+    "name": "Студия ВКС",
+    "layouts": [
+     {
+      "id": "vks_base", "name": "Базовая расстановка", "hidden": true,
+      "room": { "x": 8, "y": 22, "w": 194, "h": 262 },
+      "doors": [ { "side": "left", "a": 30, "b": 64 } ],
+      "windows": [
+       { "side": "right", "a": 42.78, "b": 99.72 },
+       { "side": "right", "a": 201.28, "b": 258.22 }
+      ],
+      "furniture": [
+       { "id": "vest-wall-v",  "type": "object", "shape": "rect", "r": 0.6, "x": 60, "y": 22, "w": 4, "h": 58, "label": "" },
+       { "id": "vest-wall-h1", "type": "object", "shape": "rect", "r": 0.6, "x": 8,  "y": 76, "w": 10, "h": 4, "label": "" },
+       { "id": "vest-wall-h2", "type": "object", "shape": "rect", "r": 0.6, "x": 50, "y": 76, "w": 14, "h": 4, "label": "" },
+       { "id": "tumb-top", "type": "object", "shape": "rect", "r": 2, "x": 70, "y": 24, "w": 80, "h": 16, "label": "" },
+       { "id": "tumb-v", "type": "object", "shape": "rect", "r": 0.6, "x": 128, "y": 50, "w": 24, "h": 36, "label": "" },
+       { "id": "tumb-h", "type": "object", "shape": "rect", "r": 0.6, "x": 128, "y": 86, "w": 60, "h": 24, "label": "Служебное место" },
+       { "id": "table-arm-left",  "type": "table", "shape": "round", "r": 2, "x": 70,  "y": 148, "w": 24, "h": 70, "label": "" },
+       { "id": "table-arm-right", "type": "table", "shape": "round", "r": 2, "x": 116, "y": 148, "w": 24, "h": 70, "label": "" },
+       { "id": "table-bottom",    "type": "table", "shape": "round", "r": 2, "x": 70,  "y": 218, "w": 70, "h": 24,  "label": "" }
+      ],
+      "seats": [
+       {"id":"s01","block":"presidium","chair":[98,244,14,8.6],"font":"main","zone":{"kind":"below","gap":1}}
+      ],
+      "seatRows": [
+       {"block":"presidium_pair","font":"main","chair":{"w":14,"h":8.6},
+        "zone":{"kind":"below","gap":1},
+        "cols":[86,124],"rows":{"y0":244,"step":0,"count":1},"idFrom":2},
+       {"block":"table_left","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":24.4,"w":36.6,"align":"right"},
+        "cols":[65.5],"rows":{"y0":154.5,"step":23,"count":3},"idFrom":4},
+       {"block":"table_right","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":149,"w":36.6,"align":"left"},
+        "cols":[144.5],"rows":{"y0":154.5,"step":23,"count":3},"idFrom":7},
+       {"block":"wall_left","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":17,"w":36.6,"align":"left"},
+        "cols":[12.5],"rows":{"y0":106.7,"step":18,"count":2},"idFrom":10},
+       {"block":"wall_right","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":156.4,"w":36.6,"align":"right"},
+        "cols":[197.5],"rows":{"y0":125.7,"step":0,"count":1},"idFrom":12}
+      ]
+     },
+     { "id": "vks1", "name": "1. Совещание", "from": "vks_base",
+       "keepBlocks": ["presidium","table_left","table_right"] },
+     { "id": "vks2", "name": "2. Совещание совместное", "from": "vks_base",
+       "keepBlocks": ["presidium_pair","table_left","table_right"] },
+     { "id": "vks3", "name": "3. Совещание расширенное", "from": "vks_base",
+       "keepBlocks": ["presidium","table_left","table_right","wall_left","wall_right"] },
+     { "id": "vks4", "name": "4. Совещание расширенное совместное", "from": "vks_base",
+       "keepBlocks": ["presidium_pair","table_left","table_right","wall_left","wall_right"] }
+    ]
+   },
+   {
+    "id": "res",
+    "name": "Резервная студия",
+    "layouts": [
+     {
+      "id": "res_base", "name": "Базовая расстановка", "hidden": true,
+      "room": { "x": 8, "y": 22, "w": 194, "h": 262  },
+      "doors": [ 
+        { "side": "top", "a": 154, "b": 188 },
+        { "side": "bottom", "a": 154, "b": 188 } 
+      ],
+      "windows": [],
+      "furniture": [
+       { "id": "tumb", "type": "object", "shape": "rect", "r": 1, "x": 18, "y": 26, "w": 120, "h": 16, "label": "" },
+       { "id": "table-long", "type": "table", "shape": "round", "r": 2, "x": 79, "y": 108, "w": 36, "h": 110, "label": "" },
+       { "id": "table-short", "type": "table", "shape": "round", "r": 2, "x": 62, "y": 218, "w": 70, "h": 30, "label": "" }
+      ],
+      "seats": [
+       {"id":"s01","block":"presidium","chair":[90,250,14,8.6],"font":"main","zone":{"kind":"below","gap":1}}
+      ],
+      "seatRows": [
+       {"block":"table_left","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":32.9,"w":36.6,"align":"right"},
+        "cols":[74],"rows":{"y0":111.5,"step":23,"count":5},"idFrom":2},
+       {"block":"table_right","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":124.5,"w":36.6,"align":"left"},
+        "cols":[120],"rows":{"y0":111.5,"step":23,"count":5},"idFrom":7},
+       {"block":"wall_left","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":17,"w":36.6,"align":"left"},
+        "cols":[12.5],"rows":{"y0":88.5,"step":0,"count":1},"idFrom":12},
+       {"block":"wall_right","font":"main","chair":{"w":7,"h":11},
+        "zone":{"kind":"band","x":156.4,"w":36.6,"align":"right"},
+        "cols":[197.5],"rows":{"y0":88.5,"step":0,"count":1},"idFrom":13}
+      ]
+     },
+     { "id": "res1", "name": "1. Совещание", "from": "res_base",
+       "keepBlocks": ["presidium","table_left","table_right"] },
+     { "id": "res2", "name": "2. Совещание расширенное", "from": "res_base",
+       "keepBlocks": ["presidium","table_left","table_right","wall_left","wall_right"] }
+    ]
+    }
+  ]
+ }

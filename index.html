@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Схема размещения · Протокол</title>
+<meta name="description" content="Рассадка участников по залу и печать схемы на A4. Работает в браузере, данные не покидают компьютер.">
+<meta name="theme-color" content="#0b1a24">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Схема размещения">
+<meta property="og:description" content="Загрузите список участников, рассадите их мышью по залу и сохраните схему в PDF.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="ink" data-mpanel="stage">
+<div class="bg"></div><div class="grain"></div>
+
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="9" width="18" height="6" rx="3" stroke="#2a1c07" stroke-width="1.7"/><circle cx="7" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="12" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="17" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="7" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="17" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/></svg>
+        </div>
+        <div><h1>Схема размещения</h1><small>Протокол · A4 книжный</small></div>
+      </div>
+
+      <div class="field"><label for="hallSel">Зал</label><select id="hallSel"></select></div>
+      <div class="field"><label for="layoutSel">Расстановка мебели</label><select id="layoutSel"></select></div>
+
+      <div class="spacer"></div>
+
+      <button class="btn icon" id="undoBtn" title="Отменить (Ctrl+Z)" aria-label="Отменить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/></svg></button>
+      <button class="btn icon" id="redoBtn" title="Повторить (Ctrl+Y)" aria-label="Повторить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 000 12h3"/></svg></button>
+      <button class="btn" id="openBtn" title="Открыть проект или список участников"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="lbl">Открыть</span></button>
+      <div class="menu-wrap">
+        <button class="btn primary" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M4 19h16"/></svg><span class="lbl">Сохранить</span></button>
+        <div class="menu" id="exportMenu">
+          <button data-act="pdf"><b>PDF · A4 книжный</b><span>готовый к печати лист</span></button>
+          <button data-act="png"><b>PNG · изображение</b><span>отправить в мессенджер</span></button>
+          <button data-act="json"><b>Проект целиком</b><span>чтобы продолжить позже</span></button>
+          <button data-act="csv-seats"><b>CSV · место → человек</b><span>для протокола, грузится обратно</span></button>
+          <button data-act="csv-people"><b>CSV · список участников</b></button>
+          <hr>
+          <button data-act="demo-import"><b>Загрузить свой список…</b><span>CSV с ФИО вместо «Демо»</span></button>
+          <button data-act="print"><b>Печать</b><span>Ctrl + P</span></button>
+          <hr>
+          <button data-act="help"><b>Как пользоваться</b><span>три шага и горячие клавиши</span></button>
+        </div>
+      </div>
+      <button class="btn icon ghost" id="newBtn" title="Новая схема (очистить)" aria-label="Новая схема"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+    </div>
+
+    <div class="topbar-row docbar">
+      <div class="field wide"><label for="titleInput">Мероприятие</label><input type="text" id="titleInput" placeholder="Схема размещения"></div>
+      <div class="field"><label for="roomInput">Помещение</label><input type="text" id="roomInput" placeholder="Зал заседаний"></div>
+      <div class="field narrow"><label for="dateInput">Дата</label><input type="date" id="dateInput"></div>
+      <div class="field narrow"><label for="timeInput">Время</label><input type="time" id="timeInput"></div>
+      <div class="doc-badge"><i>Мест в зале</i><b id="docSeats">0</b></div>
+    </div>
+  </header>
+
+  <div class="onboard" id="onboard">
+    <span class="step"><span class="n">1</span> Загрузите список <b>CSV</b> или добавьте участников вручную</span>
+    <span class="step"><span class="n">2</span> <b>Перетащите</b> фамилию на стул — или кликните человека, затем место</span>
+    <span class="step"><span class="n">3</span> Сохраните в <b>PDF</b> / распечатайте. Рассадка сохраняется автоматически</span>
+    <button class="x" id="onboardClose" aria-label="Скрыть подсказку">×</button>
+  </div>
+
+  <div class="workspace">
+
+    <aside class="panel" id="panelPeople">
+      <div class="panel-head">
+        <h2>Участники</h2><span class="count" id="peopleCount">0</span>
+        <div class="spacer"></div>
+        <button class="btn sm" id="addPersonBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Добавить</button>
+      </div>
+      <div class="panel-body people-body">
+        <div class="search-row">
+          <input type="search" id="searchInput" placeholder="Поиск по фамилии…" aria-label="Поиск участников">
+          <select id="sortSel" title="Сортировка" style="flex:0 0 116px">
+            <option value="alpha">А → Я</option>
+            <option value="orig">Порядок</option>
+            <option value="seat">По местам</option>
+            <option value="status">Свободные ↑</option>
+          </select>
+        </div>
+        <div class="chips" id="filterChips">
+          <button class="chip on" data-filter="all">Все</button>
+          <button class="chip" data-filter="free">Не размещены</button>
+          <button class="chip" data-filter="placed">Размещены</button>
+        </div>
+        <div class="views" id="viewsRow"></div>
+        <div class="bulkbar" id="bulkBar">
+          <span id="bulkCount">0 выбрано</span>
+          <div class="spacer"></div>
+          <button class="btn sm" id="bulkUnassign">Снять с мест</button>
+          <button class="btn sm danger" id="bulkDelete">Удалить</button>
+          <button class="btn sm ghost" id="bulkClear">×</button>
+        </div>
+        <div id="peopleScroll" tabindex="0" aria-label="Список участников">
+          <div id="peopleSizer"><div id="peopleRows"></div></div>
+        </div>
+        <div class="dz-wrap">
+          <div class="dropzone" id="dropZone">
+            <b>Перетащите CSV сюда</b> или нажмите для выбора файла<br>
+            <span>Фамилия Имя Отчество · до 2000 человек · ; , таб · UTF-8 / Windows-1251</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-foot">
+        <div class="foot-row">
+          <button class="btn sm ghost" id="selectAllBtn" title="Выделить всех с учётом поиска и фильтра (Ctrl+A)">Выделить всех</button>
+          <button class="btn sm ghost" id="selectAllFreeBtn" title="Выделить только неразмещённых">Свободных</button>
+          <button class="btn sm ghost" id="selectNoneBtn" title="Снять выделение">Снять</button>
+        </div>
+        <div class="foot-row">
+          <button class="btn sm ghost" id="saveViewBtn">Сохранить вид</button>
+          <button class="btn sm ghost" id="demoBtn" title="Загрузить демонстрационный список">Демо</button>
+          <button class="btn sm ghost" id="demoOwnBtn" title="Загрузить свой CSV как демо-список">Свой</button>
+          <div class="spacer"></div>
+          <button class="btn sm danger" id="clearPeopleBtn" title="Удалить весь список участников и рассадку">Очистить</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="panel" id="stage">
+      <div class="stage-tools">
+        <div class="zoomwrap">
+          <button class="btn icon sm ghost" id="zoomOut" aria-label="Уменьшить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg></button>
+          <input type="range" id="zoomRange" min="30" max="420" value="100" style="width:112px" aria-label="Масштаб">
+          <button class="btn icon sm ghost" id="zoomIn" aria-label="Увеличить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          <span id="zoomVal">100%</span>
+        </div>
+        <button class="btn sm ghost" id="fitBtn">Вписать</button>
+        <button class="btn sm ghost" id="clearSeatsBtn">Очистить рассадку</button>
+        <button class="btn sm folder" id="folderBtn" hidden><span class="dot warn"></span>Обновить из папки</button>
+        <div class="spacer"></div>
+        <span class="hint"><span class="kbd">колесо</span> масштаб · <span class="kbd">тяни фон</span> сдвиг · <span class="kbd">Del</span> снять</span>
+      </div>
+      <div id="canvasWrap">
+        <svg id="plan" xmlns="http://www.w3.org/2000/svg" aria-label="Схема зала"></svg>
+      </div>
+      <div class="stage-foot">
+        <span class="stat"><span class="dot" id="saveDot"></span><span id="saveState">Сохранено</span></span>
+        <span class="stat">Рассажено <b id="statPlaced">0</b> / <b id="statSeats">0</b></span>
+        <span class="progress"><i id="progressBar" style="width:0%"></i></span>
+        <span class="stat">Свободных участников <b id="statFree">0</b></span>
+        <div class="spacer"></div>
+        <span class="stat" id="warnStat"><span class="dot off"></span>Замечаний нет</span>
+      </div>
+    </section>
+
+    <aside class="panel" id="panelStyle">
+      <div class="panel-head"><h2>Оформление и место</h2></div>
+      <div class="panel-body">
+
+        <div class="group">
+          <h3>Выбранное место</h3>
+          <div class="seatcard" id="seatCard"></div>
+        </div>
+
+        <div class="group">
+          <h3>Типографика</h3>
+          <div class="ctl"><div class="ctl-top"><label for="cFontMain">Размер основных подписей</label><output id="oFontMain">9 pt</output></div>
+            <input type="range" id="cFontMain" min="6" max="14" step="0.5" value="9" title="1 pt ≈ 0,35 мм"></div>
+          <div class="ctl"><div class="ctl-top"><label for="cFontSide">Размер доп. подписей</label><output id="oFontSide">7 pt</output></div>
+            <input type="range" id="cFontSide" min="5" max="12" step="0.5" value="7" title="1 pt ≈ 0,35 мм"></div>
+          <div class="ctl"><div class="ctl-top"><label for="cWeight">Насыщенность подписей</label></div>
+            <select id="cWeight" style="width:100%">
+              <option value="surname">Фамилия жирным</option>
+              <option value="all">Всё жирным</option>
+              <option value="none">Всё обычным</option>
+            </select></div>
+          <div class="ctl"><div class="ctl-top"><label for="cLeading">Межстрочный интервал</label><output id="oLeading">1.00</output></div>
+            <input type="range" id="cLeading" min="0.9" max="1.6" step="0.05" value="1"></div>
+          <div class="ctl"><div class="ctl-top"><label for="cTitle">Размер заголовка</label><output id="oTitle">13 pt</output></div>
+            <input type="range" id="cTitle" min="9" max="20" step="0.5" value="13" title="1 pt ≈ 0,35 мм"></div>
+          <div class="ctl"><div class="ctl-top"><label for="cBand">Ширина колонки подписей</label><output id="oBand">100%</output></div>
+            <input type="range" id="cBand" min="70" max="140" step="5" value="100"></div>
+        </div>
+
+        <div class="group">
+          <h3>Лист и мебель</h3>
+          <div class="ctl"><div class="ctl-top"><label for="cStroke">Толщина линий</label><output id="oStroke">0.35 мм</output></div>
+            <input type="range" id="cStroke" min="0.1" max="1.2" step="0.05" value="0.35"></div>
+          <div class="colors">
+            <label class="colorctl"><input type="color" id="cPaper" value="#f6f1e4"><span>Бумага</span></label>
+            <label class="colorctl"><input type="color" id="cFurn" value="#e7ddc8"><span>Мебель</span></label>
+            <label class="colorctl"><input type="color" id="cLabel" value="#1a1a1a"><span>Подписи</span></label>
+            <label class="colorctl"><input type="color" id="cAccent" value="#2fa07a"><span>Акцент</span></label>
+          </div>
+          <div class="toggles">
+            <label class="toggle"><span>Рамки вокруг подписей</span><input type="checkbox" id="cFrames"><span class="sw"></span></label>
+            <label class="toggle"><span>Двери</span><input type="checkbox" id="cDoors" checked><span class="sw"></span></label>
+            <label class="toggle"><span>Окна</span><input type="checkbox" id="cWindows" checked><span class="sw"></span></label>
+            <label class="toggle"><span>Подписи мебели</span><input type="checkbox" id="cFurnLabels" checked><span class="sw"></span></label>
+            <label class="toggle"><span>Номера мест (только на экране)</span><input type="checkbox" id="cIds"><span class="sw"></span></label>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Рабочий стол</h3>
+          <div class="ctl"><div class="ctl-top"><label for="cTheme">Тема оформления</label></div>
+            <select id="cTheme" style="width:100%">
+              <optgroup label="Тёмные">
+                <option value="ink">Чернила</option>
+                <option value="graphite">Графит</option>
+                <option value="midday">Полдень</option>
+                <option value="night">Ночь</option>
+                <option value="projector">Проектор</option>
+              </optgroup>
+              <optgroup label="Светлые">
+                <option value="paper">Бумага</option>
+                <option value="archive">Архив</option>
+                <option value="sky">Небо</option>
+              </optgroup>
+              <optgroup label="Системная">
+                <option value="auto">Авто</option>
+              </optgroup>
+            </select></div>
+          <div class="ctl"><div class="ctl-top"><label for="cDpi">Разрешение выгрузки</label><output id="oDpi">300 dpi</output></div>
+            <input type="range" id="cDpi" min="150" max="450" step="150" value="300"></div>
+          <div class="btnrow">
+            <button class="btn sm ghost" id="resetStyleBtn">Сброс оформления</button>
+            <button class="btn sm ghost" id="randomStyleBtn">Подобрать палитру</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Проверка схемы</h3>
+          <div class="warnlist" id="warnList"></div>
+        </div>
+
+        <div class="group">
+          <h3>Быстрая выгрузка</h3>
+          <div class="btnrow">
+            <button class="btn sm primary" data-quick="pdf">PDF</button>
+            <button class="btn sm" data-quick="png">PNG</button>
+            <button class="btn sm" data-quick="json">Проект</button>
+            <button class="btn sm" data-quick="print">Печать</button>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div id="ghost" aria-hidden="true"></div>
+<div id="drawerScrim"></div>
+<aside id="drawer" aria-label="Карточка участника">
+  <div class="drawer-head">
+    <h2 id="drawerTitle">Карточка участника</h2>
+    <button class="btn icon ghost" id="drawerClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="drawer-body">
+    <div class="preview-card" id="drawerPreview"><b>ФАМИЛИЯ</b><span>Имя Отчество</span></div>
+    <div class="field"><label for="dLast">Фамилия</label><input type="text" id="dLast" autocomplete="off"></div>
+    <div class="field"><label for="dFirst">Имя</label><input type="text" id="dFirst" autocomplete="off"></div>
+    <div class="field"><label for="dMiddle">Отчество</label><input type="text" id="dMiddle" autocomplete="off"></div>
+    <div class="field"><label for="dSeat">Место в текущей расстановке</label><select id="dSeat"></select></div>
+    <div id="drawerDup" class="dupnote"></div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn primary" id="drawerSave" style="flex:1 1 auto; justify-content:center">Сохранить</button>
+    <button class="btn danger" id="drawerDelete">Удалить</button>
+  </div>
+</aside>
+
+<div id="modalScrim"><div class="modal" id="modal"></div></div>
+<div id="toasts" aria-live="polite"></div>
+<div id="printRoot"></div>
+
+<div id="gate" hidden>
+  <div class="gate-card">
+    <div class="gate-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="9" width="18" height="6" rx="3" stroke="#2a1c07" stroke-width="1.7"/><circle cx="7" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="12" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="17" cy="5.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="7" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="12" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/><circle cx="17" cy="18.5" r="2.1" stroke="#2a1c07" stroke-width="1.5"/></svg>
+    </div>
+    <h2>Укажите папку проекта</h2>
+    <p class="gate-lead">Вы открыли приложение прямо с диска. Браузер не разрешает ему самому читать соседние файлы — поэтому папку нужно выбрать один раз вручную.</p>
+    <div class="gate-files">
+      <span>templates/halls.json</span><span>demo/demo-list.csv</span>
+    </div>
+    <button class="btn primary lg" id="gatePick">Выбрать папку проекта</button>
+    <div class="gate-err" id="gateErr" hidden></div>
+    <p class="gate-note">Браузер спросит «загрузить файлы» — это стандартная формулировка выбора папки. <b>Ничего никуда не отправляется:</b> файлы читаются и остаются в вашем браузере. Выбор запоминается, повторно спрашивать не будем.</p>
+    <p class="gate-note dim">Совет: по ссылке на GitHub всё это не нужно — там приложение открывается сразу.</p>
+  </div>
+</div>
+
+<nav id="mobileTabs" aria-label="Разделы">
+  <div class="tabs">
+    <button data-mp="people"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 6.5a3 3 0 010 5.6M17.5 20a6 6 0 00-2-4.3"/></svg>Участники</button>
+    <button data-mp="stage" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="8" y="8" width="8" height="8" rx="2"/></svg>Схема</button>
+    <button data-mp="style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg>Оформление</button>
+  </div>
+</nav>
+
+<input type="file" id="fileInput" accept=".csv,.txt,.json" class="sr" aria-hidden="true">
+<input type="file" id="demoFileInput" accept=".csv,.txt" class="sr" aria-hidden="true">
+<input type="file" id="folderInput" webkitdirectory directory multiple class="sr" aria-hidden="true">
+
+<script src="libs/pdf-writer.js"></script>
+<script src="model.js"></script>
+<script src="csv.js"></script>
+<script src="view.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
